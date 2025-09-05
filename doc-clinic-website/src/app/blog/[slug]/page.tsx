@@ -3,6 +3,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { client } from "@/sanity/client";
 import Link from "next/link";
+import { notFound } from 'next/navigation';
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
@@ -14,12 +15,21 @@ const urlFor = (source: SanityImageSource) =>
 
 const options = { next: { revalidate: 30 } };
 
+// Render a 404 page if a slug doesn't exist
+export const dynamicParams = true;
+
 export default async function PostPage({
   params,
 }: {
   params: { slug: string };
 }) {
   const post = await client.fetch<SanityDocument>(POST_QUERY, params, options);
+
+  // If no post is found, display the 404 page
+  if (!post) {
+    notFound();
+  }
+
   const postImageUrl = post.image
     ? urlFor(post.image)?.width(550).height(310).url()
     : null;

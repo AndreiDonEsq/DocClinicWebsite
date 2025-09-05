@@ -1,0 +1,33 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Next.js Dev Server",
+      "type": "npm",
+      "script": "dev",
+      "path": "doc-clinic-website/",
+      "problemMatcher": [],
+      "presentation": {
+        "group": "servers",
+        "panel": "new"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "Run Sanity Studio Dev Server",
+      "type": "npm",
+      "script": "dev",
+      "path": "studio-doc-family-website/",
+      "problemMatcher": [],
+      "presentation": {
+        "group": "servers",
+        "panel": "new"
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    }
+  ]
+}
