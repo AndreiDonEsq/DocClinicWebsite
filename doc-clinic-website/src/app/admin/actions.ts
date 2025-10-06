@@ -143,5 +143,5 @@ export async function updatePost(formData: FormData) {
     // Revalidate caches and redirect
     revalidatePath('/blog')
     revalidatePath(`/blog/${slug}`) // Also revalidate the specific post page
-    redirect('/admin')
+    redirect(`/blog/${slug}`)
 }

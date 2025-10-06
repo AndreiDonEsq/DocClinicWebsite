@@ -7,11 +7,23 @@ import { updatePost } from "../../actions"
 
 const POST_QUERY = `*[_type == "post" && slug.current == $slug][0]`;
 
-export default async function EditPostPage({ params }: { params: { slug: string } }) {
-    const session = await auth()
-    if (!session) redirect("/login")
+export async function generateStaticParams() {
+    const posts = await client.fetch<SanityDocument[]>(`*[_type == "post" && defined(slug.current)]{ "slug": slug.current }`);
+    return posts.map((post) => ({ slug: post.slug }));
+}
 
-    const post = await client.fetch<SanityDocument>(POST_QUERY, { slug: params.slug });
+export default async function EditPostPage({
+    params,
+}: {
+    params: Promise<{ slug: string }>;
+}) {
+    const session = await auth();
+    if (!session) redirect("/login");
+
+    const { slug } = await params;
+
+    const post = await client.fetch<SanityDocument>(POST_QUERY, { slug }); // <-- Use the resolved slug
+
 
     if (!post) {
         return <div>Post not found.</div>
