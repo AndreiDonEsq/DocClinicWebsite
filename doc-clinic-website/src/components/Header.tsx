@@ -21,9 +21,6 @@ export default async function Header() {
             <Link href="/" className="text-gray-300 hover:text-white transition-colors">
               Acasă
             </Link>
-            <Link href="/servicii" className="text-gray-300 hover:text-white transition-colors">
-              Servicii
-            </Link>
             <Link href="/blog" className="text-gray-300 hover:text-white transition-colors">
               Blog
             </Link>
@@ -48,7 +45,7 @@ export default async function Header() {
             ) : null}
           </nav>
 
-          {/* Mobile Menu Button (we can add functionality later) */}
+          {/* Mobile Menu Button*/}
           <div className="md:hidden">
             <button className="text-white">
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

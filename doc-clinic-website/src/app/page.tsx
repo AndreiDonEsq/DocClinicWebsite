@@ -23,7 +23,7 @@ export default function HomePage() {
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight">Galerie Foto</h2>
             <p className="mt-4 text-lg leading-8 text-slate-600">
-              Un spațiu primitor și modern, dedicat sănătății dumneavoastră.
+              Un spațiu dedicat sănătății dumneavoastră.
             </p>
           </div>
           <div className="mt-16">
@@ -38,7 +38,6 @@ export default function HomePage() {
           <div className="text-center">
             <h2 className="text-3xl font-bold tracking-tight">Ne găsiți aici</h2>
             <p className="mt-4 text-lg leading-8 text-slate-600">
-              Salut prieteni
             </p>
           </div>
 
@@ -46,18 +45,18 @@ export default function HomePage() {
             {/* Address & Hours Info */}
             <div className="prose lg:prose-lg">
               <h3>Adresă</h3>
-              <p>Strada Exemplului Nr. 123, Sector 1, București</p>
+              <p>Strada Suzana 7, București 052034</p>
 
               <h3>Program</h3>
               <p>
-                Luni - Vineri: 09:00 - 17:00<br />
+                Luni - Vineri: 07:00 - 20:00<br />
                 Sâmbătă - Duminică: Închis
               </p>
 
               <h3>Contact</h3>
               <p>
-                Telefon: +40 123 456 789<br />
-                Email: contact@dralanda.ro
+                Telefon: +40 723 301 006<br />
+                Email: landadanielescu@yahoo.com
               </p>
             </div>
 
