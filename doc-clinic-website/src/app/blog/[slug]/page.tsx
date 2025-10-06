@@ -21,9 +21,10 @@ export const dynamicParams = true;
 export default async function PostPage({
   params,
 }: {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 }) {
-  const post = await client.fetch<SanityDocument>(POST_QUERY, params, options);
+  const { slug } = await params;
+  const post = await client.fetch<SanityDocument>(POST_QUERY, { slug }, options);
 
   // If no post is found, display the 404 page
   if (!post) {

@@ -2,13 +2,13 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Run Next.js Dev Server",
+      "label": "DEV: Run Next.js",
       "type": "npm",
       "script": "dev",
       "path": "doc-clinic-website/",
       "problemMatcher": [],
       "presentation": {
-        "group": "servers",
+        "group": "devServers",
         "panel": "new"
       },
       "runOptions": {
@@ -16,17 +16,39 @@
       }
     },
     {
-      "label": "Run Sanity Studio Dev Server",
+      "label": "DEV: Run Sanity Studio",
       "type": "npm",
       "script": "dev",
       "path": "studio-doc-family-website/",
       "problemMatcher": [],
       "presentation": {
-        "group": "servers",
+        "group": "devServers",
         "panel": "new"
       },
       "runOptions": {
         "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "BUILD: Next.js App",
+      "type": "npm",
+      "script": "build",
+      "path": "doc-clinic-website/",
+      "problemMatcher": [],
+      "presentation": {
+        "group": "builds",
+        "panel": "new"
+      }
+    },
+    {
+      "label": "BUILD: Sanity Studio",
+      "type": "npm",
+      "script": "build",
+      "path": "studio-doc-family-website/",
+      "problemMatcher": [],
+      "presentation": {
+        "group": "builds",
+        "panel": "new"
       }
     }
   ]

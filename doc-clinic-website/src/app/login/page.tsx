@@ -1,14 +1,17 @@
 import { signIn } from "@/../auth"
 import { redirect } from "next/navigation";
 import { LoginErrorDisplay } from "./LoginErrorDisplay";
+import { Suspense } from 'react';
 
 export default function LoginPage() {
     return (
         <main className="flex items-center justify-center min-h-screen">
             <div className="w-full max-w-md p-8 space-y-8 bg-white rounded-lg shadow-md">
-                <h1 className="text-2-xl font-bold text-center">Admin Login</h1>
+                <h1 className="text-2xl font-bold text-center">Admin Login</h1>
 
-                <LoginErrorDisplay />
+                <Suspense fallback={<div></div>}>
+                    <LoginErrorDisplay />
+                </Suspense>
 
                 <form
                     action={async (formData) => {
@@ -16,23 +19,22 @@ export default function LoginPage() {
                         try {
                             await signIn("credentials", formData)
                         } catch (error) {
-
-                            // If the error is a NEXT_REDIRECT, it's a successful login redirect.
-                            // We must re-throw it to allow Next.js to complete the redirect.
-                            if (error.digest?.startsWith('NEXT_REDIRECT')) {
-                                throw error;
+                            interface AuthError extends Error {
+                                digest?: string;
+                                type?: string;
                             }
 
-                            // This is the Next.js way to handle errors in Server Actions.
-                            // It will re-render the page with the error code in the URL.
-                            const errorType = (error as Error & { type?: string }).type;
-                            if (errorType === 'CredentialsSignin') {
+                            const authError = error as AuthError;
+
+                            if (authError.digest?.startsWith('NEXT_REDIRECT')) {
+                                throw authError;
+                            }
+
+                            if (authError.type === 'CredentialsSignin' || authError.digest?.includes('CredentialsSignin')) {
                                 redirect('/login?error=CredentialsSignin');
-                            } else {
-                                console.log(error);
-                                // Handle other potential errors if needed
-                                redirect('/login?error=Unknown');
                             }
+
+                            redirect('/login?error=Unknown');
                         }
                     }}
                 >
