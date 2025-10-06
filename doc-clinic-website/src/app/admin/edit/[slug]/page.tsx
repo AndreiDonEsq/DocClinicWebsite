@@ -11,7 +11,6 @@ export default async function EditPostPage({ params }: { params: { slug: string 
     const session = await auth()
     if (!session) redirect("/login")
 
-    const resolvedParams = await params;
     const post = await client.fetch<SanityDocument>(POST_QUERY, { slug: params.slug });
 
     if (!post) {
@@ -19,9 +18,14 @@ export default async function EditPostPage({ params }: { params: { slug: string 
     }
 
     // Loop through all blocks in the body and join their text content
-    const bodyText = post.body?.map((block: any) =>
-        block.children?.map((span: any) => span.text).join('')
-    ).join('\n\n') || ''; // Join paragraphs with double line breaks
+    type Block = {
+        _type: 'block';
+        children: { _type: 'span'; text: string }[];
+    };
+
+    const bodyText = post.body?.map((block: Block) =>
+        block.children?.map((span) => span.text).join('')
+    ).join('\n\n') || '';
 
     return (
         <main className="container mx-auto p-8">
