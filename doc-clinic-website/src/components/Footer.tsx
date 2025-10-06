@@ -32,7 +32,7 @@ export default function Footer() {
         <div className="border-t border-slate-700 mt-8 pt-6 text-center text-sm text-slate-400 flex flex-col sm:flex-row justify-between">
           <p>&copy; {new Date().getFullYear()} Dr. [Mom's Name]. Toate drepturile rezervate.</p>
           
-          <Link href="/admin" className="hover:text-white transition-colors mt-2 sm:mt-0">
+          <Link href="/login" className="hover:text-white transition-colors mt-2 sm:mt-0">
             Doctor Login
           </Link>
         </div>

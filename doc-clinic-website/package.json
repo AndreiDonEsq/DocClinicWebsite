@@ -10,13 +10,18 @@
   },
   "dependencies": {
     "@sanity/image-url": "^1.2.0",
+    "@types/bcryptjs": "^2.4.6",
     "@vis.gl/react-google-maps": "^1.5.5",
+    "bcryptjs": "^3.0.2",
     "embla-carousel-react": "^8.6.0",
     "geist": "^1.4.2",
+    "iron-session": "^8.0.4",
     "next": "15.5.2",
+    "next-auth": "^5.0.0-beta.29",
     "next-sanity": "^10.0.16",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "slugify": "^1.6.6"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",

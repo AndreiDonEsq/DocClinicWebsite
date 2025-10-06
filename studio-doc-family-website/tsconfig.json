@@ -9,7 +9,9 @@
     "module": "Preserve",
     "moduleDetection": "force",
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
+    "allowImportingTsExtensions": true, 
+    "noEmit": true,
     "incremental": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
